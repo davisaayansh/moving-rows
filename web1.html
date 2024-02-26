@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll and Hover Effects</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .division {
+    flex: 0 0 30%;
+    height: 200px;
+    background-color: #d44d4d;
+    border: 2px solid #ccc;
+    transition: transform 0.3s ease-in-out, scale 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .division:hover {
+    transform: scale(1.1);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row" id="row1">
+    <div class="division" id="division1">Division 1</div>
+    <div class="division" id="division2">Division 2</div>
+    <div class="division" id="division3">Division 3</div>
+  </div>
+  <div class="row" id="row2">
+    <div class="division" id="division4">Division 4</div>
+    <div class="division" id="division5">Division 5</div>
+    <div class="division" id="division6">Division 6</div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    let row1 = document.getElementById('row1');
+    let row2 = document.getElementById('row2');
+    let scrollPosition = window.scrollY;
+    row1.style.transform = 'translateX(' + (-scrollPosition) + 'px)';
+    row2.style.transform = 'translateX(' + scrollPosition + 'px)';
+  });
+</script>
+</body>
+</html>
